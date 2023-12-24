@@ -17,7 +17,7 @@ import { publicProvider } from 'wagmi/providers/public';
 export default function RainbowContext(props: React.PropsWithChildren<{}> & {}) {
 
     const { chains, publicClient } = configureChains(
-        [zkSyncSepoliaTestnet,zkSync],
+        [zkSyncSepoliaTestnet, zkSync],
         [
             alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
             publicProvider()
