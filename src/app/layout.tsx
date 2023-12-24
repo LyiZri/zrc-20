@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import RainbowContext from '@/context/rainbowContext'
 import classNames from 'classnames'
 import Header from '@/components/page/header'
+import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,10 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={classNames(inter.className, "bg-black w-screen h-auto flex")}>
         <div className='w-full mx-auto container text-[#a1a1aa] py-4'>
-          <RainbowContext>
+          <Providers>
             <Header />
             {children}
-          </RainbowContext>
+          </Provider>
         </div>
       </body>
     </html>
