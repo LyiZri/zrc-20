@@ -9,8 +9,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
-    // bsc,
-    goerli
+    bsc,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -19,9 +18,8 @@ import { alchemyId } from '@/lib/config';
 
 
 const { chains, publicClient } = configureChains(
-    [goerli],
+    [bsc],
     [
-        alchemyProvider({ apiKey: alchemyId as string }),
         publicProvider()
     ]
 );

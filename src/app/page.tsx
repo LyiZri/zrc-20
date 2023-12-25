@@ -22,7 +22,7 @@ export default function Home() {
             </li>
           </ul>
           <h2 className='text-white text-3xl'>BSC-420</h2>
-          <h2 className='w-full text-right text-white'>Progress: <span className='text-primary'>{progress * 100} %</span></h2>
+          <h2 className='w-full text-right text-white'>Progress: <span className='text-primary'>{(progress * 100).toFixed(2)} %</span></h2>
           <div className='flex justify-between'>
             <Line percent={progress * 100} strokeWidth={1} trailColor="#222224" strokeColor="#6AD09D" />
           </div>

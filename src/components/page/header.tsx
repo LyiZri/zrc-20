@@ -10,6 +10,7 @@ import DcIcon from '../icon/Dcicon';
 import { useAccount } from 'wagmi';
 import Drawer from '@mui/material/Drawer';
 import { useSize } from 'ahooks';
+import Opensea from '../icon/Opensea';
 
 const DrawerSide = () => {
     const { address } = useAccount()
@@ -34,8 +35,8 @@ const DrawerSide = () => {
                 <Link href={"https://twitter.com/ZRC420_"} target='_blank' className='scale-75 m-auto'>
                     <TwIcon />
                 </Link>
-                <div className='scale-75 m-auto cursor-not-allowed'>
-                    <DcIcon />
+                <div className=' m-auto cursor-not-allowed'>
+                    <Opensea />
                 </div>
             </div>
             {
