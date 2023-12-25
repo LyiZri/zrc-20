@@ -9,7 +9,8 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
-    bsc,
+    // bsc,
+    goerli
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -17,7 +18,7 @@ import { injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, tokenPocketWa
 
 
 const { chains, publicClient } = configureChains(
-    [bsc],
+    [goerli],
     [
         // alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
         publicProvider()
