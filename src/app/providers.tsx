@@ -15,12 +15,13 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, tokenPocketWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+import { alchemyId } from '@/lib/config';
 
 
 const { chains, publicClient } = configureChains(
     [goerli],
     [
-        alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
+        alchemyProvider({ apiKey: alchemyId as string }),
         publicProvider()
     ]
 );
