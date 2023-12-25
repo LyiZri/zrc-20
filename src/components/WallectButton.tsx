@@ -5,7 +5,6 @@ export default function WallectButton() {
     return (
         <ConnectButton.Custom>
             {({ account, chain, openConnectModal, openChainModal, mounted }) => {
-                console.log(account, chain, openConnectModal, openChainModal, mounted);
                 return (
                     <div
                         {...(!mounted && {

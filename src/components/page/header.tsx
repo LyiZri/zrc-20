@@ -7,13 +7,15 @@ import Link from 'next/link'
 import WallectButton from '../WallectButton';
 import TwIcon from '../icon/tw';
 import DcIcon from '../icon/Dcicon';
+import { useAccount } from 'wagmi';
 export default function header() {
+    const { address } = useAccount()
     return (
         <div className='mx-auto flex justify-between gap-9 py-7'>
             <div className='flex'>
                 <Image src={Logo} width={132} height={34} alt="logo" />
             </div>
-            <div className='flex lg:ml-20 m-auto justify-start flex-1'>
+            <div className='hidden lg:flex lg:ml-20 m-auto justify-start flex-1'>
                 <div className='flex w-2/3 justify-between'>
                     <div onClick={() => alert("comming soon")}>
                         <Link href={"/"} className=' text-base'>Marketplace</Link>
@@ -31,7 +33,9 @@ export default function header() {
                 <div className='scale-75 m-auto cursor-not-allowed'>
                     <DcIcon />
                 </div>
-                <WallectButton />
+                {
+                    !address ? <WallectButton /> : <ConnectButton showBalance={false} />
+                }
             </div>
         </div>
     )

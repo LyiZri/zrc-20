@@ -1,10 +1,13 @@
 "use client";
-import { useCountDown } from 'ahooks';
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
-// @ts-ignore
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { div } from 'three/examples/jsm/nodes/Nodes.js';
+import { userContractMint } from '@/hooks/contract';
+import { useCountDown, useCounter } from 'ahooks';
+import React, { useRef, useEffect, useState } from 'react';
+import { SINGLE_PRICE } from '@/lib/config'
+import { parseEther } from 'viem';
+import { useAccount } from 'wagmi';
+import Loading from './icon/Loading';
+import { toast } from 'react-toastify';
+import classNames from 'classnames';
 
 
 const SvgContent = ({ children }: { children: React.ReactNode }) => {
@@ -32,7 +35,7 @@ const SvgContent = ({ children }: { children: React.ReactNode }) => {
                     </filter>
                 </defs>
             </svg>
-            <p className='text-2xl absolute top-2 left-3 text-white'>
+            <p className='text-2xl absolute top-3 left-3 text-white'>
                 {children}
             </p>
         </div>
@@ -58,39 +61,80 @@ const TimeItemBox = ({ timeNum, title }: { timeNum: number, title: string }) => 
 function PreViewNft() {
     //倒计时
     const [countdown, formattedRes] = useCountDown({
-        targetDate: '2023-12-25 21:00:00',
+        targetDate: '2023-12-25 14:20:00',
+        onEnd: () => {
+            setAction(true)
+        }
     })
     const { days, hours, minutes, seconds } = formattedRes
+    const [action, setAction] = useState(() => days == 0 && hours == 0 && minutes == 0 && seconds == 0)
+    const [loading, setLoading] = React.useState(true)
+    const { address } = useAccount()
+    const [mintNum, { inc,
+        dec,
+        set,
+        reset }] = useCounter(1, { min: 1, max: 10 })
+    const { isLoading, data, mint } = userContractMint()
+    const handleMint = () => {
+        if (!address) {
+            toast.warning('Please connect wallet')
+            return
+        }
+        toast.info('Minting...')
+        if (action) {
+            mint({
+                args: [mintNum],
+                value: parseEther((SINGLE_PRICE * mintNum).toString())
+            })
+        }
+    }
     return <div className='w-full lg:w-1/2 flex justify-between flex-col'>
         <div className='border border-[#27272a] rounded-md'>
             <iframe className='w-full aspect-square rounded-md' src='https://my.spline.design/iridescentcube-ffaa0d1b195c83ba9e0275663c4514fa/' />
         </div>
         <div className='my-6 flex justify-center m-auto'>
-            <div className="flex justify-between">
-                <TimeItemBox title="Days" timeNum={days} />
-                <p className='my-auto text-white text-xs mx-1'>
-                    D
-                </p>
-                <TimeItemBox title="Hours" timeNum={hours} />
-                <p className='my-auto text-white text-xs mx-1'>
-                    H
-                </p>
-                <TimeItemBox title="Minutes" timeNum={minutes} />
-                <p className='my-auto text-white text-xs mx-1'>
-                    M
-                </p>
-                <TimeItemBox title="Seconds" timeNum={seconds} />
-                <p className='my-auto text-white text-xs mx-1'>
-                    S
-                </p>
-            </div>
+            {action ?
+                <div className='flex justify-center gap-4'>
+                    <p className='w-12 rounded-lg cursor-pointer bg-primary text-black text-center my-auto h-6' onClick={() => set(1)}>min</p>
+                    <p className='w-6 cursor-pointer rounded-lg bg-primary text-black text-center my-auto h-6' onClick={() => dec()}>-</p>
+                    <p className='w-6 h-6 rounded-lg text-white bg-slate-900 text-center'>{mintNum}</p>
+                    <p className='w-6 cursor-pointer bg-primary rounded-lg text-black text-center my-auto h-6' onClick={() => inc()}>+</p>
+                    <p className='w-12 cursor-pointer bg-primary text-black rounded-lg text-center my-auto h-6' onClick={() => set(10)}>MAX</p>
+                </div>
+                :
+                <div className="flex justify-between">
+                    <TimeItemBox title="Days" timeNum={days} />
+                    <p className='my-auto text-white text-xs mx-1'>
+                        D
+                    </p>
+                    <TimeItemBox title="Hours" timeNum={hours} />
+                    <p className='my-auto text-white text-xs mx-1'>
+                        H
+                    </p>
+                    <TimeItemBox title="Minutes" timeNum={minutes} />
+                    <p className='my-auto text-white text-xs mx-1'>
+                        M
+                    </p>
+                    <TimeItemBox title="Seconds" timeNum={seconds} />
+                    <p className='my-auto text-white text-xs mx-1'>
+                        S
+                    </p>
+                </div>}
         </div>
         <div className='flex justify-between gap-6'>
-            <button className='bg-[#6ad09d] opacity-30 cursor-not-allowed text-black text-sm w-full py-2 rounded-md'>
+            <button className='bg-[#6ad09d] opacity-30 cursor-not-allowed text-black text-sm w-full py-2 rounded-md' onClick={()=>{
+                toast.info("Comming soon")
+            }}>
                 Trade
             </button>
-            <button className=' bg-[#6ad09d] text-black cursor-not-allowed text-sm w-full py-2 rounded-md'>
-                Mint
+            <button className={classNames('bg-[#6ad09d] text-black text-sm w-full py-2 rounded-md disabled:cursor-not-allowed text-center disabled:bg-opacity-50', {
+                "cursor-pointer": action,
+                "cursor-not-allowed": !action
+            })} disabled={isLoading} onClick={handleMint}>
+                {
+                    isLoading ? <Loading /> :
+                        "Mint"
+                }
             </button>
 
         </div>
