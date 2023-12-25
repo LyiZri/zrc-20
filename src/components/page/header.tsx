@@ -32,7 +32,7 @@ const DrawerSide = () => {
         </div>
         <div className='flex flex-col-reverse lg:flex-row gap-12 mt-12 lg:my-auto'>
             <div className='flex justify-between gap-12'>
-                <Link href={"https://twitter.com/ZRC420_"} target='_blank' className='scale-75 m-auto'>
+                <Link href={"https://twitter.com/BSC420_BTC"} target='_blank' className='scale-75 m-auto'>
                     <TwIcon />
                 </Link>
                 <div className=' m-auto cursor-not-allowed'>
