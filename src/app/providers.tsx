@@ -28,7 +28,7 @@ const { chains, publicClient } = configureChains(
     ]
 );
 const demoAppInfo = {
-    appName: 'Rainbowkit Demo',
+    appName: 'brc-420',
 };
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_KEY as string;
 const wallets = [

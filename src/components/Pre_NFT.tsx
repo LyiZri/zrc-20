@@ -61,7 +61,7 @@ const TimeItemBox = ({ timeNum, title }: { timeNum: number, title: string }) => 
 function PreViewNft() {
     //倒计时
     const [countdown, formattedRes] = useCountDown({
-        targetDate: '2023-12-25 14:20:00',
+        targetDate: '2023-12-25 14:25:00',
         onEnd: () => {
             setAction(true)
         }
