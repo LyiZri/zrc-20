@@ -11,8 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Brc-20 Tokens',
-  description: '',
+  title: 'BSC-20 Tokens',
+  description: 'BSC-420 First inscription collection on BNB',
 }
 
 export default function RootLayout({

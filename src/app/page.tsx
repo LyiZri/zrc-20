@@ -10,7 +10,7 @@ export default function Home() {
   const { progress, loading, totalSupply } = useContractProgress()
   const { userBalance } = useContractUserBalance()
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-8 lg:p-24">
       <section className='flex justify-between flex-col-reverse lg:flex-row w-full gap-14'>
         <div className='flex-1 flex justify-between flex-col gap-7'>
           <ul className='flex justify-start gap-2'>
@@ -21,7 +21,7 @@ export default function Home() {
               PFP
             </li>
           </ul>
-          <h2 className='text-white text-3xl'>BRC-420</h2>
+          <h2 className='text-white text-3xl'>BSC-420</h2>
           <h2 className='w-full text-right text-white'>Progress: <span className='text-primary'>{progress * 100} %</span></h2>
           <div className='flex justify-between'>
             <Line percent={progress * 100} strokeWidth={1} trailColor="#222224" strokeColor="#6AD09D" />
@@ -32,7 +32,7 @@ export default function Home() {
             </h3>
             <li className='w-full flex justify-between text-sm'>
               <span className='opacity-50'>Type</span>
-              <span>BRC-420</span>
+              <span>BSC-420</span>
             </li>
             <li className='w-full flex justify-between text-sm'>
               <span className='opacity-50'>Address Per Mint</span>
@@ -51,7 +51,7 @@ export default function Home() {
               <span>{Number(totalSupply)}</span>
             </li>
             <li className='w-full flex justify-between text-sm'>
-              <span className='opacity-50'>Your BRC-420</span>
+              <span className='opacity-50'>Your BSC-420</span>
               <span>{userBalance}</span>
             </li>
           </ul>

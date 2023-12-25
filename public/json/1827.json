@@ -1,12 +1,12 @@
 {
-    "description": "BRC-420 First inscription collection on BNB",
+    "description": "BSC-420 First inscription collection on BNB",
     "external_url": "",
     "image": "https://ipfs.io/ipfs/bafybeiecbwfh2dak6cip6galwwj6v7g67jkthqbgchngzvktnqdxhr7leu",
-    "name": "BRC-420",
+    "name": "BSC-420",
     "attributes": [
         {
             "trait_type": "p",
-            "value": "BRC-20"
+            "value": "BSC-20"
         },
         {
             "trait_type": "op",

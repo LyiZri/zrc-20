@@ -40,7 +40,7 @@ export const useContractUserBalance = () => {
         if (!address) {
             setUserBalance(0)
         } else {
-            setUserBalance(Number(balance))
+            setUserBalance(Number(balance) || 0)
         }
     }, [balance, address])
     return { userBalance }

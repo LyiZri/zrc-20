@@ -61,7 +61,7 @@ const TimeItemBox = ({ timeNum, title }: { timeNum: number, title: string }) => 
 function PreViewNft() {
     //倒计时
     const [countdown, formattedRes] = useCountDown({
-        targetDate: '2023-12-25 14:25:00',
+        targetDate: '2023-12-26 19:00:00',
         onEnd: () => {
             setAction(true)
         }
@@ -76,6 +76,10 @@ function PreViewNft() {
         reset }] = useCounter(1, { min: 1, max: 10 })
     const { isLoading, data, mint } = userContractMint()
     const handleMint = () => {
+        if(!action){
+            toast.warning('Not At Mint Time')
+            return
+        }
         if (!address) {
             toast.warning('Please connect wallet')
             return

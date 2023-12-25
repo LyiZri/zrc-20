@@ -9,11 +9,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
-    zkSync,
-    zkSyncSepoliaTestnet,
     bsc,
-    bscTestnet,
-    goerli
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -21,14 +17,14 @@ import { injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, tokenPocketWa
 
 
 const { chains, publicClient } = configureChains(
-    [bsc, bscTestnet,goerli],
+    [bsc],
     [
         // alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
         publicProvider()
     ]
 );
 const demoAppInfo = {
-    appName: 'brc-420',
+    appName: 'bsc-420',
 };
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_KEY as string;
 const wallets = [
