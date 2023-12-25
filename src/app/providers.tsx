@@ -23,7 +23,7 @@ import { injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, tokenPocketWa
 const { chains, publicClient } = configureChains(
     [bsc, bscTestnet,goerli],
     [
-        alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
+        // alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
         publicProvider()
     ]
 );
