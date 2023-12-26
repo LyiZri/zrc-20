@@ -35,9 +35,9 @@ const DrawerSide = () => {
                 <Link href={"https://twitter.com/BSC420_BTC"} target='_blank' className='scale-75 m-auto'>
                     <TwIcon />
                 </Link>
-                <div className=' m-auto cursor-not-allowed'>
+                <Link href={"https://opensea.io/collection/bsc-420-5"} target='_blank' className=' m-auto'>
                     <Opensea />
-                </div>
+                </Link>
             </div>
             {
                 !address ? <WallectButton /> : <ConnectButton showBalance={false} />

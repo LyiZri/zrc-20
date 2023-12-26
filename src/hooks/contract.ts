@@ -20,7 +20,7 @@ export const useContractProgress = () => {
     console.log(totalSupply, totalNum);
 
     return {
-        progress: Number(totalSupply) / totalNum || 0,
+        progress: (Number(totalSupply)+100) / totalNum || 0,
         totalSupply: totalSupply || 0,
         loading,
         error,

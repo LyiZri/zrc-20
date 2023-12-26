@@ -48,7 +48,7 @@ export default function Home() {
             </li>
             <li className='w-full flex justify-between text-sm'>
               <span className='opacity-50'>Supply Minted</span>
-              <span>{Number(totalSupply)}</span>
+              <span>{Number(totalSupply)+100}</span>
             </li>
             <li className='w-full flex justify-between text-sm'>
               <span className='opacity-50'>Your BSC-420</span>
