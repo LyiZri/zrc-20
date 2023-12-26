@@ -10,6 +10,7 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
     bsc,
+    goerli
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -18,7 +19,7 @@ import { alchemyId } from '@/lib/config';
 
 
 const { chains, publicClient } = configureChains(
-    [bsc],
+    [goerli],
     [
         publicProvider()
     ]
